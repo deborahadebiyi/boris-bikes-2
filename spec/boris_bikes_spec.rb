@@ -20,7 +20,7 @@ RSpec.describe DockingStation do
     end
 
     it "#tells user dock is full, if bike already docked" do
-      subject.dock_bike(Bike.new)
+      20.times {subject.dock_bike(Bike.new)}
       expect { subject.dock_bike(Bike.new) }.to raise_error 'Dock full'
     end
   end
