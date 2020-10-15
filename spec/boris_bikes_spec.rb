@@ -23,6 +23,12 @@ RSpec.describe DockingStation do
       20.times {subject.dock_bike(Bike.new)}
       expect { subject.dock_bike(Bike.new) }.to raise_error 'Dock full'
     end
+
+    it "accepts user input for capacity otherwise defaults to 20" do
+      docking_station = DockingStation.new(40)
+      40.times { docking_station.dock_bike(Bike.new)}
+      expect { docking_station.dock_bike(Bike.new) }.to raise_error 'Dock full'
+    end
   end
 
 RSpec.describe Bike do
