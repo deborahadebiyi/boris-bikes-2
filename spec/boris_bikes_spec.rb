@@ -15,13 +15,15 @@ RSpec.describe DockingStation do
     expect(subject).to respond_to(:dock_bike).with(1).arguments
   end
 
-
-  describe '#release_bike' do
     it 'raises an error when there are no bikes' do
       expect { subject.release_bike }.to raise_error 'No bikes available'
     end
+
+    it "#tells user dock is full, if bike already docked" do
+      subject.dock_bike(Bike.new)
+      expect { subject.dock_bike(Bike.new) }.to raise_error 'Dock full'
+    end
   end
-end
 
 RSpec.describe Bike do
   it 'to responding to working? method' do

@@ -12,6 +12,7 @@ class DockingStation
   end
 
   def dock_bike(returned_bike)
+  fail 'Dock full' if @available_bikes != nil
    @available_bikes = returned_bike
   end
 
